@@ -13,7 +13,7 @@ public class RegularUser extends User{
         super(username, password, email);
     }
     
-    public static void RegAuthentication() throws Exception, IOException {
+    public static void regAuthentication() throws Exception, IOException {
         File userfile;
         userfile = new File("UsersData.txt");
         PrintWriter pw = new PrintWriter(new FileWriter(userfile, true));

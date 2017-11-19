@@ -62,7 +62,7 @@ public class Book {
         this.price = price;
     }
     
-    public static void AddBook() throws Exception, IOException{
+    public static void addBook() throws Exception, IOException{
         File bookfile;
         bookfile = new File ("bookInfo.txt");
         PrintWriter pw = new PrintWriter(new FileWriter(bookfile, true));
@@ -105,7 +105,7 @@ public class Book {
         }      
     }
     
-    public static void EditBook() throws Exception, IOException{
+    public static void editBook() throws Exception, IOException{
         File bookfile;
         bookfile = new File ("bookInfo.txt");
         Vector<Book> v = new Vector();
@@ -239,7 +239,7 @@ public class Book {
         pw.close();        
     }
     
-    public static void DeleteBook() throws Exception, IOException{
+    public static void deleteBook() throws Exception, IOException{
         File bookfile;
         bookfile = new File ("bookInfo.txt");
         Vector<Book> v = new Vector();

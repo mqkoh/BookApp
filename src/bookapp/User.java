@@ -1,6 +1,9 @@
 
 package bookapp;
 
+import java.util.*;
+import java.io.*;
+
 public class User {
     protected String username;
     protected String password;
@@ -50,5 +53,11 @@ public class User {
     
     public String getID(){
         return username + password;
+    }
+    
+    public static void editUserInfo() throws Exception, IOException{
+        
+        
+        
     }
 }

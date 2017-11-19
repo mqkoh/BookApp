@@ -13,7 +13,7 @@ public class Admin extends User{
         super(username, password, email);
     }
     
-        public static void AdminAuthentication() throws Exception, IOException {
+        public static void adminAuthentication() throws Exception, IOException {
             
         File userfile;
         userfile = new File("UsersData.txt");
@@ -81,4 +81,47 @@ public class Admin extends User{
                 System.out.println("Authentication failed. Please try again.");
         }    
     }
+        
+        public static void addAdmin() throws Exception, IOException{
+        
+        File userfile;
+        userfile = new File("UsersData.txt");
+        PrintWriter pw = new PrintWriter(new FileWriter(userfile, true));
+        Scanner input = new Scanner(System.in);
+        
+        boolean add = true;
+        while (add){
+            System.out.println("\nAdd New Admin");
+            System.out.println("--------------------");
+            
+            //Enter admin information
+            Admin newA = new Admin();
+            newA.setType("Admin");
+            System.out.print("Enter username: ");
+            newA.setUsername(input.nextLine().replace(' ', '-'));
+            System.out.print("Enter password: ");
+            newA.setPassword(input.nextLine().replace(' ', '-'));
+            System.out.print("Enter email: ");
+            newA.setEmail(input.nextLine().replace(' ', '-'));
+            
+            //Print the admin's information to UsersData.txt
+            pw.println(newA.getType() + "\t" + newA.getUsername() + "\t" + newA.getPassword() + "\t" + newA.getEmail());
+            
+            //Asks if user wants to add more new administrators to the database
+            System.out.println("Add more new admins? (y/n)");
+            String choice = input.next();
+            if (choice.equalsIgnoreCase("N")){
+                add = false;
+            }
+            else if (choice.equalsIgnoreCase("Y")){
+                continue;
+            }
+            else{
+                break;
+            }
+            pw.close();
+        }
+        
+    }
+        
 }
