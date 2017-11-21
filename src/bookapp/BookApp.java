@@ -17,6 +17,7 @@ public class BookApp {
         //Regular User Interface
         if (selection == 1){
             regAuthentication();
+            searchBook();
         }
         //Admin interface
         else if (selection == 2){
@@ -39,6 +40,9 @@ public class BookApp {
                 case 4:
                     addAdmin();
                     break;
+                case 5:
+                    searchBook();
+                    break;
                 default:
                     System.out.println("You have exited the program.");
             }            
@@ -46,7 +50,6 @@ public class BookApp {
         else{
             System.out.println("You have exited the program.");
         }
-        
         
     }
     

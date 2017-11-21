@@ -13,6 +13,14 @@ public class Book {
     
     public Book(){
     }
+    
+    public Book(Book book){
+        this.title = book.title;
+        this.author = book.author;
+        this.isbn = book.isbn;
+        this.genre = book.genre;
+        this.price = book.price;
+    }
 
     public Book(String title, String author, String isbn, String genre, Double price) {
         this.title = title;
@@ -61,7 +69,7 @@ public class Book {
     public void setPrice(Double price) {
         this.price = price;
     }
-    
+
     public static void addBook() throws Exception, IOException{
         File bookfile;
         bookfile = new File ("bookInfo.txt");
@@ -330,6 +338,71 @@ public class Book {
             pw.println(bk.getTitle() + "\t" + bk.getAuthor() + "\t" + bk.getISBN() + "\t" + bk.getGenre() + "\t" + bk.getPrice());            
         }
         pw.close();
-    }    
+    }
+
+    public static void searchBook() throws Exception, IOException{
+        
+        File bookfile;
+        bookfile = new File ("bookInfo.txt");
+        Vector<Book> v = new Vector();
+        Scanner sc = new Scanner (bookfile);
+        Scanner input = new Scanner (System.in);
+        
+        //Read all the values from the file and assign to object, then add the objects to vector
+        while (sc.hasNext()){
+            Book bk = new Book();
+            bk.setTitle(sc.next().replace('-', ' '));
+            bk.setAuthor(sc.next().replace('-', ' '));
+            bk.setISBN(sc.next());
+            bk.setGenre(sc.next());
+            bk.setPrice(Double.parseDouble(sc.next()));
+            
+            v.add(bk);            
+        }
+        
+        //Set ListIterator
+        ListIterator<Book> lit = v.listIterator();
+        
+        // Prompts user to enter keyword for searching books
+        System.out.println("Enter keyword to search (title/author): ");
+        String keyword = input.nextLine();
+        
+        Vector vi = new Vector();
+        int index;
+        
+        // Checks for matches with the keyword
+        boolean found = false;
+        while (lit.hasNext()){
+            Book next = new Book((Book) lit.next());
+            if((next.getTitle().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))||(next.getAuthor().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))){
+                index = lit.previousIndex();
+                vi.add(index);
+                found = true;
+            }
+        }
+        
+        ListIterator li = vi.listIterator();
+        
+        // Display results
+        System.out.println("\nSEARCH RESULTS");
+        System.out.println("----------------------------------------------------");        
+        
+        if (!found){            
+            System.out.println("\nSorry, your search did not match any books.");
+        }
+        else{
+            
+            while (li.hasNext()){
+                int i = (int) li.next();
+                System.out.println("\n" + "Title: " + v.get(i).getTitle());
+                System.out.println("Author: " + v.get(i).getAuthor());
+                System.out.println("ISBN: " + v.get(i).getISBN());
+                System.out.println("Genre: " + v.get(i).getGenre());
+                System.out.println("Price: RM " + v.get(i).getPrice());                
+            }
+            
+        }
+        
+    }
     
 }
