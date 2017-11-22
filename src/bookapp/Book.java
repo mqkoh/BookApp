@@ -96,10 +96,12 @@ public class Book {
             
             //Prints the book's information to bookfile.txt
             pw.println(newBk.getTitle() + "\t" + newBk.getAuthor() + "\t" + newBk.getISBN() + "\t" + newBk.getGenre() + "\t" + newBk.getPrice());
-
+            pw.flush();
+            
             //Asks if user wants to add more books to the database
             System.out.print("Add more books? (y/n) ");
             String choice = input.next();
+            String next = input.nextLine();
             if (choice.equalsIgnoreCase("N")){
                 add = false;
             }
@@ -198,6 +200,7 @@ public class Book {
                 // Asks if user wishs to edit other information of the book
                 System.out.println("Do you wish to edit any other information of this book? (Y/N)");
                 String choice = input.next();
+                String next = input.nextLine();
                 if (choice.equalsIgnoreCase("N")){
                     edit = false;
                 }
@@ -213,6 +216,7 @@ public class Book {
             // Asks if user wish to edit any other book
             System.out.println("Do you wish to edit any other books? (Y/N)");
             String choice = input.next();
+            String next = input.nextLine();
             if (choice.equalsIgnoreCase("N")){
                 more = false;
             }
@@ -293,6 +297,7 @@ public class Book {
             // Delete Confirmation
             System.out.println("Delete " + v.get(select).getTitle() + "? (Y/N)");
             String choice = input.next();
+            String next = input.nextLine();
             if (choice.equalsIgnoreCase("Y")){
                 v.removeElementAt(select);
             }
@@ -306,6 +311,7 @@ public class Book {
             //Asks if user wish to delete other books
             System.out.println("Do you wish to delete any other books? (Y/N)");
             String cont = input.next();
+            next = input.nextLine();
             if (cont.equalsIgnoreCase("N")){
                 more = false;
             }

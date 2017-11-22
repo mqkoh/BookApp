@@ -1,1 +1,12 @@
 Magnus-Chase-and-the-Ship-of-Dead	Rick-Riordan	9780141342597	Fantasy	33.5
+Percy-Jackson-and-the-Lightning-Thief	Rick-Riordan	9780141346809	Fantasy	34.95
+Night-World-#1	L.-J.-Smith	9781416974505	Fantasy	33.9
+The-Best-of-Me	Nicholas-Sparks	9781455556557	Romance	25.0
+The-Very-Picture-of-You	Isabel-Wolff	9780007245840	Romance	35.9
+City-of-Bones	Cassandra-Clare	9781416955078	Fantasy	35.9
+Mediator-#1	Meg-Cabot	9780060725112	Fantasy	39.9
+Worth-Dying-For	Lee-Child	9780440246299	Thriller	40.95
+The-Da-Vinci-Code	Dan-Brown	9780552159715	Thriller	107.96
+The-Host	Stephenie-Meyer	9780316068048	Sci-Fi	77.75
+Ender's-Game	Orson-Scott-Card	9780765370624	Sci-Fi	39.95
+Harry-Potter-and-the-Philosopher's-Stone	J.K.-Rowling	9780747532743	Fantasy	41.47

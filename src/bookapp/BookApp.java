@@ -42,7 +42,7 @@ public class BookApp {
                     break;
                 case 5:
                     searchBook();
-                    break;
+                    break; 
                 default:
                     System.out.println("You have exited the program.");
             }            
