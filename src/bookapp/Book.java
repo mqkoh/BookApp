@@ -400,7 +400,7 @@ public class Book {
             
             while (li.hasNext()){
                 int i = (int) li.next();
-                System.out.println("\n" + "Title: " + v.get(i).getTitle());
+                System.out.println("\n" + (i+1) + ". Title: " + v.get(i).getTitle());
                 System.out.println("Author: " + v.get(i).getAuthor());
                 System.out.println("ISBN: " + v.get(i).getISBN());
                 System.out.println("Genre: " + v.get(i).getGenre());
