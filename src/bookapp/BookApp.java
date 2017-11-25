@@ -175,9 +175,24 @@ public class BookApp {
                         System.out.println("Authentication failed. Please try again.");
                 }    
             }
-
+            // Create copy of current user
             User user =(User) v.get(index);
-            editUserInfo(user);
+            
+            // Menu
+            System.out.println("Select:");
+            System.out.println("1. Search Book \n2. Edit Personal Info");
+            int menu = input.nextInt();
+            
+            switch(menu){
+                case 1:
+                    searchBook();
+                    break;
+                case 2:
+                    editUserInfo(user);
+                    break;
+                default:
+                    System.out.println("You have exited the program.");
+            }            
             
         }
         //Admin interface
@@ -241,12 +256,12 @@ public class BookApp {
                 else
                     System.out.println("Authentication failed. Please try again.");
             }
+            // Create copy of current user
             User user =(User) v.get(index);
-            editUserInfo(user);
             
             // Menu
             System.out.println("Select:");
-            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Add New Admin");
+            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Add New Admin \n6. Edit Personal Info");
             int menu = input.nextInt();
             
             switch(menu){
@@ -260,11 +275,14 @@ public class BookApp {
                     deleteBook();
                     break;
                 case 4:
-                    addAdmin();
+                    searchBook();
                     break;
                 case 5:
-                    searchBook();
-                    break; 
+                    addAdmin();
+                    break;
+                case 6:
+                    editUserInfo(user);
+                    break;
                 default:
                     System.out.println("You have exited the program.");
             }            
