@@ -8,7 +8,8 @@ public class User {
     protected String username;
     protected String password;
     protected String email;
-    private String type;
+    protected String type;
+    protected User user = null;
     
     public User(){
     }
@@ -17,6 +18,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+    
+    public User(User user){
+        this.user = user;
     }
     
     public String getUsername(){
@@ -50,14 +55,118 @@ public class User {
     public void setType(String type) {
         this.type = type;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     
     public String getID(){
         return username + password;
     }
     
-    public static void editUserInfo() throws Exception, IOException{
+    public static void Authentication() throws Exception, IOException{
         
+    }
+    
+    public static void editUserInfo(User user) throws Exception, IOException{
         
+        File userfile;
+        userfile = new File("UsersData.txt");
+        Scanner sc = new Scanner(userfile);
+        Scanner input = new Scanner (System.in);
+
+        Vector v = new Vector();
+
+        //Read all the values from the file and assign to object, then add the objects to vector
+        while(sc.hasNext()){
+            User u = new User();
+            u.setType(sc.next());
+            u.setUsername(sc.next());
+            u.setPassword(sc.next());
+            u.setEmail(sc.next());
+            
+            v.add(u);
+        }
+        
+         //Set list iterator
+        ListIterator<User> lit = v.listIterator();
+        
+        // Get index of current user
+        int index = 0;
+        while (lit.hasNext()){
+            if (lit.next().getUsername().equals(user.getUsername())){
+                index = lit.previousIndex();
+            }
+        }
+        
+        // Create a copy of the current user
+        User us = ((User) v.get(index));
+        
+        // Edit
+        boolean next = true;
+        while (next){
+            
+            // Prompts user to choose information to edit
+            System.out.println("Choose information to edit: ");
+            System.out.println("1. Username");
+            System.out.println("2. Password");
+            System.out.println("3. Email");
+
+            int edit = input.nextInt();
+            String extra = input.nextLine();        
+        
+            switch (edit){
+                case 1:
+                    System.out.println("Enter username: ");
+                    us.setUsername(input.nextLine());
+                    break;
+                case 2:
+                    System.out.println("Enter password: ");
+                    us.setPassword(input.nextLine());
+                    break;
+                case 3:
+                    System.out.println("Enter email: ");
+                    us.setEmail(input.nextLine());
+                    break;
+                default:
+                    System.out.println("You did not make any edits.");
+                    break;
+
+            }
+            // Asks if user wish edit any other detail
+            System.out.println("Edit other details? (y/n)");
+            String choice = input.nextLine();
+            if (choice.equalsIgnoreCase("n")){
+                next = false;
+                break;
+            }
+            else if (choice.equalsIgnoreCase("y")){
+                continue;
+            }
+            else{
+                break;
+            }
+        }
+        
+        // Sets the user
+        user.setUser(us);        
+        
+        // Remove old data and add new data
+        v.remove(index);
+        v.add(index, us);
+        
+        // Prints updated information to UsersData.txt
+        PrintWriter pw = new PrintWriter(new FileWriter(userfile, false));
+        Iterator<User> it = v.iterator();
+        while (it.hasNext()){
+            User u = (User) it.next();
+            pw.println(u.getType() + "\t" + u.getUsername() + "\t" + u.getPassword() + "\t" + u.getEmail());
+        }
+        pw.close();
         
     }
 }
