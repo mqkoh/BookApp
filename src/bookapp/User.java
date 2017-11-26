@@ -68,10 +68,6 @@ public class User {
         return username + password;
     }
     
-    public static void Authentication() throws Exception, IOException{
-        
-    }
-    
     public static void editUserInfo(User user) throws Exception, IOException{
         
         File userfile;
@@ -115,20 +111,20 @@ public class User {
             System.out.println("1. Username");
             System.out.println("2. Password");
             System.out.println("3. Email");
+            System.out.println("Enter any other key if you do not wish edit any information.");
 
-            int edit = input.nextInt();
-            String extra = input.nextLine();        
+            String edit = input.nextLine();        
         
             switch (edit){
-                case 1:
+                case "1":
                     System.out.println("Enter username: ");
                     us.setUsername(input.nextLine());
                     break;
-                case 2:
+                case "2":
                     System.out.println("Enter password: ");
                     us.setPassword(input.nextLine());
                     break;
-                case 3:
+                case "3":
                     System.out.println("Enter email: ");
                     us.setEmail(input.nextLine());
                     break;
@@ -138,17 +134,13 @@ public class User {
 
             }
             // Asks if user wish edit any other detail
-            System.out.println("Edit other details? (y/n)");
+            System.out.println("Edit other details? \n(Enter 'Y' to edit more details. Enter any other key if you do not wish to do any more edits.)");
             String choice = input.nextLine();
-            if (choice.equalsIgnoreCase("n")){
-                next = false;
-                break;
-            }
-            else if (choice.equalsIgnoreCase("y")){
+            if (choice.equalsIgnoreCase("Y")){
                 continue;
             }
             else{
-                break;
+                next = false;
             }
         }
         

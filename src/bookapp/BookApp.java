@@ -1,21 +1,18 @@
 package bookapp;
 
-import static bookapp.Admin.addAdmin;
-import static bookapp.Book.*;
-import static bookapp.User.editUserInfo;
 import java.io.*;
 import java.util.*;
 public class BookApp {
 
     public static void main(String[] args) throws Exception, IOException {
         
-        System.out.println("Are you : \n1. A Regular User? \n2. An Admin");
+        System.out.println("Are you : \n1. A Regular User? \n2. An Admin \nEnter any other key to exit.");
         Scanner input = new Scanner (System.in);
-        int selection = input.nextInt();
+        String selection = input.nextLine();
         int index = 0;
         
         //Regular User Interface
-        if (selection == 1){
+        if (selection.equals("1")){
             
             // Regular User Authentication
             File userfile;
@@ -33,24 +30,23 @@ public class BookApp {
                 user.setPassword(sc.next());
                 user.setEmail(sc.next());
 
-                v.add(user);
-                
+                v.add(user);                
             }
 
             //Set iterator
             Iterator<User> it = v.iterator();
 
             //Register or Login
-            int action;
+            String action;
 
             System.out.println("Register/Login");
             System.out.println("------------------");
-            System.out.println("For new user, select '1' to register.\nFor registered user, select '2' to login.");
-            action = input.nextInt();
+            System.out.println("For new user, select '1' to register.\nFor registered user, select '2' to login. \nEnter any other key to exit.");
+            action = input.nextLine();
 
             boolean found = true;
             //Register
-            if (action == 1){
+            if (action.equals("1")){
 
                 //Create New User
                 RegularUser newuser = new RegularUser();
@@ -58,6 +54,8 @@ public class BookApp {
 
                 //Input Username
                 while(found){
+                    System.out.println("Login");
+                    System.out.println("--------------------");
 
                     System.out.print("Enter username: ");
                     newuser.setUsername(input.next());
@@ -103,10 +101,10 @@ public class BookApp {
                 
                 found = false;
 
-//                RegularUser user = new RegularUser();
-
                 //Input Username and Password
                 while(!found){
+                    System.out.println("\nLogin");
+                    System.out.println("--------------------");
 
                     System.out.print("Enter username: ");
                     String username = input.next();
@@ -138,13 +136,13 @@ public class BookApp {
             }
 
             //Login
-            else if(action == 2){
+            else if(action.equals("2")){
                 found = false;
-
-//                RegularUser user = new RegularUser();
 
                 //Input Username and Password
                 while(!found){
+                    System.out.println("\nLogin");
+                    System.out.println("--------------------");
 
                     System.out.print("Enter username: ");
                     String username = input.next();
@@ -175,28 +173,19 @@ public class BookApp {
                         System.out.println("Authentication failed. Please try again.");
                 }    
             }
+            else{
+                System.out.println("You have exited the program.");
+                System.exit(0);
+            }
             // Create copy of current user
             User user =(User) v.get(index);
             
-            // Menu
-            System.out.println("Select:");
-            System.out.println("1. Search Book \n2. Edit Personal Info");
-            int menu = input.nextInt();
-            
-            switch(menu){
-                case 1:
-                    searchBook();
-                    break;
-                case 2:
-                    editUserInfo(user);
-                    break;
-                default:
-                    System.out.println("You have exited the program.");
-            }            
+            // Display Menu
+            RegularUser.Menu(user);       
             
         }
         //Admin interface
-        else if (selection == 2){
+        else if (selection.equals("2")){
             
             File userfile;
             userfile = new File("UsersData.txt");
@@ -213,20 +202,17 @@ public class BookApp {
                 user.setPassword(sc.next());
                 user.setEmail(sc.next());
 
-                v.add(user);
-                
+                v.add(user);                
             }
 
             //Login
-            System.out.println("Login");
-            System.out.println("------------------");
 
             boolean found = false;
 
-//            Admin user = new Admin();
-
             //Input Username and Password
             while(!found){
+                System.out.println("\nLogin");
+                System.out.println("------------------");
 
                 System.out.print("Enter username: ");
                 String username = input.next();
@@ -237,8 +223,7 @@ public class BookApp {
                 //Authentication
                 String id = username + password;
 
-                ListIterator<User> lit = v.listIterator();
-                
+                ListIterator<User> lit = v.listIterator();                
                 
                 while(lit.hasNext()){
                     if(lit.next().getID().equals(id)){
@@ -259,45 +244,12 @@ public class BookApp {
             // Create copy of current user
             User user =(User) v.get(index);
             
-            // Menu
-            System.out.println("Select:");
-            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Add New Admin \n6. Edit Personal Info");
-            int menu = input.nextInt();
-            
-            switch(menu){
-                case 1:
-                    addBook();
-                    break;
-                case 2:
-                    editBook();
-                    break;
-                case 3:
-                    deleteBook();
-                    break;
-                case 4:
-                    searchBook();
-                    break;
-                case 5:
-                    addAdmin();
-                    break;
-                case 6:
-                    editUserInfo(user);
-                    break;
-                default:
-                    System.out.println("You have exited the program.");
-            }            
+            // Display Menu
+            Admin.Menu(user);                   
         }
         else{
             System.out.println("You have exited the program.");
-        }
-        
+        }        
     }
-    
-    
-
-    
-
-    
-
 }
     

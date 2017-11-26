@@ -88,31 +88,36 @@ public class Book {
             System.out.print("Enter author: ");
             newBk.setAuthor(input.nextLine().replace(' ', '-'));
             System.out.print("Enter ISBN: ");
-            newBk.setISBN(input.next());
+            newBk.setISBN(input.nextLine());
             System.out.print("Enter main genre: ");
-            newBk.setGenre(input.next());
-            System.out.print("Enter price: RM ");
-            newBk.setPrice(Double.parseDouble(input.next()));
+            newBk.setGenre(input.nextLine());
+            boolean price = false;
+            while (!price){
+                System.out.print("Enter price: RM ");
+                try{
+                    newBk.setPrice(Double.parseDouble(input.nextLine()));
+                    price = true;
+                }catch (NumberFormatException e){
+                    System.out.println("Please enter numerical input.");
+                }
+            }
             
             //Prints the book's information to bookfile.txt
             pw.println(newBk.getTitle() + "\t" + newBk.getAuthor() + "\t" + newBk.getISBN() + "\t" + newBk.getGenre() + "\t" + newBk.getPrice());
             pw.flush();
             
             //Asks if user wants to add more books to the database
-            System.out.print("Add more books? (y/n) ");
+            System.out.println("Add more books? \n(Enter 'Y' to add more books. Enter any other key to continue.) ");
             String choice = input.next();
             String next = input.nextLine();
-            if (choice.equalsIgnoreCase("N")){
-                add = false;
-            }
-            else if (choice.equalsIgnoreCase("Y")){
+            if (choice.equalsIgnoreCase("Y")){
                 continue;
             }
             else{
-                break;
-            }
-            pw.close();
-        }      
+                add = false;
+            }            
+        }
+        pw.close();
     }
     
     public static void editBook() throws Exception, IOException{
@@ -153,78 +158,85 @@ public class Book {
             }
             
             // Select book to edit
-            System.out.println("Select a book that you wish to edit. ");
-            int select = input.nextInt() - 1;
-            if (select >= v.size()){
+            try{ // Catch NumberFormatException
+                System.out.println("Select a book that you wish to edit. ");
+                int select = Integer.parseInt(input.nextLine()) - 1;
+                if ((select >= v.size())||(select < 1)){
+                    System.out.println("You did not select any book.");
+                    break;
+                }
+
+                boolean edit = true;
+                while (edit){
+
+                    // Select information to edit
+                    System.out.println("Select an information that you wish to edit: ");
+                    System.out.println("1. Title \t 2. Author \t 3. ISBN \t 4. Genre \t 5. Price  \nEnter any other key if you do not wish to make any edits..");
+                    String info = input.nextLine();
+
+                    switch (info){
+                        case "1":
+                            System.out.print("Enter Title: ");
+                            v.get(select).setTitle(input.next());
+                            break;
+                        case "2":
+                            System.out.print("Enter Author: ");
+                            v.get(select).setAuthor(input.next());
+                            break;
+                        case "3":
+                            System.out.print("Enter ISBN: ");
+                            v.get(select).setISBN(input.next());
+                            break;
+                        case "4":
+                            System.out.print("Enter Genre: ");
+                            v.get(select).setGenre(input.next());
+                            break;
+                        case "5":
+                            boolean price = false;
+                            while (!price){
+                                System.out.print("Enter Price: RM ");
+                                try{
+                                    v.get(select).setPrice(Double.parseDouble(input.next()));
+                                    price = true;
+                                }catch(NumberFormatException e){
+                                    System.out.println("Please enter numerical input.");
+                                }
+                            }
+                            break;
+                        default:
+                            System.out.println("You did not edit any of the information. ");
+                            break;
+                    }
+
+                    // Display information of edited book
+                    System.out.println("Title: " + v.get(select).getTitle() + "\tAuthor: " + v.get(select).getAuthor() + "\tISBN: " + v.get(select).getISBN() + "\tGenre: " + v.get(select).getGenre() + "\tPrice: RM " + v.get(select).getPrice());
+
+                    // Asks if user wishs to edit other information of the book
+                    System.out.println("Do you wish to edit any other information of this book? \n(Enter 'Y' to edit other informations. Enter any other key if you do not wish to make any edits.)");
+                    String choice = input.next();
+                    String next = input.nextLine();
+                    if (choice.equalsIgnoreCase("Y")){
+                        continue;
+                    }
+                    else{
+                        edit = false;
+                    }
+                }
+            
+            }catch (NumberFormatException e){
                 System.out.println("You did not select any book.");
                 break;
             }
             
-            boolean edit = true;
-            while (edit){
-                
-                // Select information to edit
-                System.out.println("Select an information that you wish to edit: ");
-                System.out.println("1. Title \t 2. Author \t 3. ISBN \t 4. Genre \t 5. Price ");
-                int info = input.nextInt();
-                
-                switch (info){
-                    case 1:
-                        System.out.print("Enter Title: ");
-                        v.get(select).setTitle(input.next());
-                        break;
-                    case 2:
-                        System.out.print("Enter Author: ");
-                        v.get(select).setAuthor(input.next());
-                        break;
-                    case 3:
-                        System.out.print("Enter ISBN: ");
-                        v.get(select).setISBN(input.next());
-                        break;
-                    case 4:
-                        System.out.print("Enter Genre: ");
-                        v.get(select).setGenre(input.next());
-                        break;
-                    case 5:
-                        System.out.print("Enter Price: RM ");
-                        v.get(select).setPrice(Double.parseDouble(input.next()));
-                        break;
-                    default:
-                        System.out.println("You did not edit any of the information. ");
-                        break;
-                }
-                
-                // Display information of edited book
-                System.out.println("Title: " + v.get(select).getTitle() + "\tAuthor: " + v.get(select).getAuthor() + "\tISBN: " + v.get(select).getISBN() + "\tGenre: " + v.get(select).getGenre() + "\tPrice: RM " + v.get(select).getPrice());
-                
-                // Asks if user wishs to edit other information of the book
-                System.out.println("Do you wish to edit any other information of this book? (Y/N)");
-                String choice = input.next();
-                String next = input.nextLine();
-                if (choice.equalsIgnoreCase("N")){
-                    edit = false;
-                }
-                else if (choice.equalsIgnoreCase("Y")){
-                    continue;
-                }
-                else{
-                    break;
-                }
-                
-            }
-            
             // Asks if user wish to edit any other book
-            System.out.println("Do you wish to edit any other books? (Y/N)");
+            System.out.println("Do you wish to edit any other books? \n(Enter 'Y' to edit more books. Enter any other key if you do not wish to make any more edits.)");
             String choice = input.next();
             String next = input.nextLine();
-            if (choice.equalsIgnoreCase("N")){
-                more = false;
-            }
-            else if (choice.equalsIgnoreCase("Y")){
+            if (choice.equalsIgnoreCase("Y")){
                 continue;
             }
             else{
-                break;
+                more = false;
             }            
         }
         
@@ -287,38 +299,37 @@ public class Book {
             }
             
             // Select book to delete
-            System.out.println("Select a book that you wish to delete. ");
-            int select = input.nextInt() - 1;
-            if (select >= v.size()){
+            try{ // Catch NumberFormatException
+                System.out.println("Select a book that you wish to delete. ");
+                int select = Integer.parseInt(input.nextLine()) - 1;
+                if ((select >= v.size())||(select < 1)){
+                    System.out.println("You did not select any book.");
+                    break;
+                }
+
+                // Delete Confirmation
+                System.out.println("Delete " + v.get(select).getTitle() + "? \n(Enter 'Y' to delete. Enter any other key if you do not wish to delete this book.)");
+                String choice = input.next();
+                String next = input.nextLine();
+                if (choice.equalsIgnoreCase("Y")){
+                    v.removeElementAt(select);
+                }
+                else{
+                    continue;
+                }
+
+                //Asks if user wish to delete other books
+                System.out.println("Do you wish to delete any other books? \n(Enter 'Y' to delete more books. Enter any other key if you do not wish to delete more books.)");
+                String cont = input.next();
+                next = input.nextLine();
+                if (cont.equalsIgnoreCase("Y")){
+                    continue;
+                }
+                else{
+                    more = false;
+                }
+            }catch (NumberFormatException e){
                 System.out.println("You did not select any book.");
-                break;
-            }
-            
-            // Delete Confirmation
-            System.out.println("Delete " + v.get(select).getTitle() + "? (Y/N)");
-            String choice = input.next();
-            String next = input.nextLine();
-            if (choice.equalsIgnoreCase("Y")){
-                v.removeElementAt(select);
-            }
-            else if (choice.equalsIgnoreCase("N")){
-                continue;
-            }
-            else{
-                break;
-            }
-            
-            //Asks if user wish to delete other books
-            System.out.println("Do you wish to delete any other books? (Y/N)");
-            String cont = input.next();
-            next = input.nextLine();
-            if (cont.equalsIgnoreCase("N")){
-                more = false;
-            }
-            else if (choice.equalsIgnoreCase("Y")){
-                continue;
-            }
-            else{
                 break;
             }
         }
