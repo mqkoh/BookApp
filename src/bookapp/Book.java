@@ -381,7 +381,7 @@ public class Book {
         ListIterator<Book> lit = v.listIterator();
         
         // Prompts user to enter keyword for searching books
-        System.out.println("Enter keyword to search (title/author): ");
+        System.out.println("Enter keyword to search (title/author/genre): ");
         String keyword = input.nextLine();
         
         Vector vi = new Vector();
@@ -391,7 +391,7 @@ public class Book {
         boolean found = false;
         while (lit.hasNext()){
             Book next = new Book((Book) lit.next());
-            if((next.getTitle().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))||(next.getAuthor().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))){
+            if((next.getTitle().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))||(next.getAuthor().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))||(next.getGenre().toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT)))){
                 index = lit.previousIndex();
                 vi.add(index);
                 found = true;

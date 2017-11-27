@@ -121,6 +121,8 @@ public class Quiz {
             }
         }
         
+        Collections.shuffle(questions);
+        
         Scanner input = new Scanner (System.in);
         boolean userinput = true;
         String choice;
