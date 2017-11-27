@@ -1,0 +1,310 @@
+Q Which of these is your favourite author?
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C Stephen King
+R Horror
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One: A Star Wars Story
+R Sci-Fi
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R Horror
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasy
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance
+Q Which movie did you last watch?
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C Stephen King
+R Horroe
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One: A Star Wars Story
+R Sci-Fi
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R 
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasuu
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance
+Q Which of these are your favourite pairing?
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C Stephen King
+R Horroe
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One: A Star Wars Story
+R Sci-Fi
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R 
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasuu
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance
+Q Which of the following is your favourite TV series?
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C Stephen King
+R Horroe
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One: A Star Wars Story
+R Sci-Fi
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R 
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasuu
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance
+Q Which of these do you like to see in a story
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C Stephen King
+R Horroe
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One: A Star Wars Story
+R Sci-Fi
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R 
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasuu
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance
+Q Which of these is your favourite author?
+C J.K. Rowling
+R Fantasy
+C James Patterson
+R Thriller
+C George Orwell
+R Sci-Fi
+C Nicholas Sparks
+R Romance
+C Stephen King
+R Horror
+Q Which movie did you last watch?
+C Thor: Ragnarok
+R Fantasy
+C It
+R Horror
+C Blade Runner
+R Thriller
+C La La Land
+R Romance
+C Rogue One; A Star Wars Story
+R Sci-Fi
+Q Which of these is your favourite pairing?
+C Percy & Annabeth
+R Fantasy
+C Hazel & Augustus
+R Romance
+C Tris & Four
+R Sci-Fi
+C Katniss & Peeta
+R Thriller
+C Edward & Bella
+R Horror
+Q Which of the following is your favourite TV series?
+C Sherlock
+R Thriller
+C Stranger Things
+R Horror
+C Game of Thrones
+R Fantasy
+C Star Trek: Discovery
+R Sci-Fi
+C The Vampire Diaries
+R Romance
+Q Which of these would you like to see in a story?
+C Vampires
+R Horror
+C Aliens
+R Sci-Fi
+C Supernatural powers
+R Fantasy
+C Lots of action
+R Thriller
+C Love and heartbreaks
+R Romance

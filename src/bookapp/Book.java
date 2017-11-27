@@ -422,4 +422,42 @@ public class Book {
         
     }
     
+    public static void displayBook(String results) throws Exception, IOException{
+        
+        File bookfile;
+        bookfile = new File ("bookInfo.txt");
+        Vector<Book> v = new Vector();
+        Scanner sc = new Scanner (bookfile);
+        Scanner input = new Scanner (System.in);
+        
+        //Read all the values from the file and assign to object, then add the objects to vector
+        while (sc.hasNext()){
+            Book bk = new Book();
+            bk.setTitle(sc.next().replace('-', ' '));
+            bk.setAuthor(sc.next().replace('-', ' '));
+            bk.setISBN(sc.next());
+            bk.setGenre(sc.next());
+            bk.setPrice(Double.parseDouble(sc.next()));
+            
+            v.add(bk);            
+        }
+        
+        //Set ListIterator
+        ListIterator<Book> lit = v.listIterator();
+        
+        int i = 1;
+        System.out.println("\nBooks You Might Like");
+        System.out.println("---------------------------------");
+        while (lit.hasNext()){
+            Book bk = lit.next();
+            if (bk.genre.equals(results)){
+                System.out.println("\n" + i + ". Title: " + bk.getTitle());
+                System.out.println("Author: " + bk.getAuthor());
+                System.out.println("ISBN: " + bk.getISBN());
+                System.out.println("Price: RM " + bk.getPrice());
+            }
+            i++;
+        }
+    }
+    
 }

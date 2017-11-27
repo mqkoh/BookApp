@@ -5,6 +5,7 @@ import static bookapp.Book.addBook;
 import static bookapp.Book.deleteBook;
 import static bookapp.Book.editBook;
 import static bookapp.Book.searchBook;
+import static bookapp.Quiz.createQuiz;
 import static bookapp.User.editUserInfo;
 import java.io.*;
 import java.util.*;
@@ -64,7 +65,7 @@ public class Admin extends User{
             System.out.println("\nMenu");
             System.out.println("--------------------");
             System.out.println("Select:");
-            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Add New Admin \n6. Edit Personal Info \nEnter any other key to exit.");
+            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Create New Quiz \n6. Add New Admin \n7. Edit Personal Info \nEnter any other key to exit.");
             String menu = input.nextLine();
             
             switch(menu){
@@ -81,9 +82,12 @@ public class Admin extends User{
                     searchBook();
                     break;
                 case "5":
+                    createQuiz();
+                    break;                    
+                case "6":
                     addAdmin();
                     break;
-                case "6":
+                case "7":
                     editUserInfo(user);
                     break;
                 default:

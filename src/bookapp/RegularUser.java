@@ -2,6 +2,7 @@
 package bookapp;
 
 import static bookapp.Book.searchBook;
+import static bookapp.Quiz.takeQuiz;
 import static bookapp.User.editUserInfo;
 import java.io.*;
 import java.util.*;
@@ -21,7 +22,7 @@ public class RegularUser extends User{
         System.out.println("\nMenu");
         System.out.println("------------------");
         System.out.println("Select:");
-        System.out.println("1. Search Book \n2. Edit Personal Info \nEnter any other key to exit.");
+        System.out.println("1. Search Book \n2. Edit Personal Info \n3. Start Book Preference Quiz \nEnter any other key to exit.");
         String menu = input.nextLine();
 
         switch(menu){
@@ -30,6 +31,9 @@ public class RegularUser extends User{
                 break;
             case "2":
                 editUserInfo(user);
+                break;
+            case "3":
+                takeQuiz();
                 break;
             default:
                 System.out.println("You have exited the program.");
