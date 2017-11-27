@@ -3,6 +3,7 @@ package bookapp;
 
 import java.util.*;
 import java.io.*;
+import javax.swing.JOptionPane;
 
 public class User {
     protected String username;
@@ -107,35 +108,28 @@ public class User {
         while (next){
             
             // Prompts user to choose information to edit
-            System.out.println("Choose information to edit: ");
-            System.out.println("1. Username");
-            System.out.println("2. Password");
-            System.out.println("3. Email");
-            System.out.println("Enter any other key if you do not wish edit any information.");
-
-            String edit = input.nextLine();        
+            String edit = JOptionPane.showInputDialog("Choose information to edit: \n1. Username \n2. Password \n3. Email \nEnter any other key if you do not wish edit any information.");        
         
             switch (edit){
                 case "1":
-                    System.out.println("Enter username: ");
-                    us.setUsername(input.nextLine());
+                    String username = JOptionPane.showInputDialog("Enter username");
+                    us.setUsername(username);
                     break;
                 case "2":
-                    System.out.println("Enter password: ");
-                    us.setPassword(input.nextLine());
+                    String pass = JOptionPane.showInputDialog("Enter password");
+                    us.setPassword(pass);
                     break;
                 case "3":
-                    System.out.println("Enter email: ");
-                    us.setEmail(input.nextLine());
+                    String email = JOptionPane.showInputDialog("Enter email");
+                    us.setEmail(email);
                     break;
                 default:
-                    System.out.println("You did not make any edits.");
+                    JOptionPane.showMessageDialog(null, "You did not make any edits.");
                     break;
 
             }
             // Asks if user wish edit any other detail
-            System.out.println("Edit other details? \n(Enter 'Y' to edit more details. Enter any other key if you do not wish to do any more edits.)");
-            String choice = input.nextLine();
+            String choice = JOptionPane.showInputDialog("Edit other details? \nEnter 'Y' to edit more details. \nEnter any other key if you do not wish to do any more edits.");
             if (choice.equalsIgnoreCase("Y")){
                 continue;
             }

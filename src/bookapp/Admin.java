@@ -9,6 +9,7 @@ import static bookapp.Quiz.createQuiz;
 import static bookapp.User.editUserInfo;
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Admin extends User{
     
@@ -28,26 +29,23 @@ public class Admin extends User{
 
             boolean add = true;
             while (add){
-                System.out.println("\nAdd New Admin");
-                System.out.println("--------------------");
+                JOptionPane.showMessageDialog(null, "Add New Admin");
 
                 //Enter admin information
                 Admin newA = new Admin();
                 newA.setType("Admin");
-                System.out.print("Enter username: ");
-                newA.setUsername(input.nextLine().replace(' ', '-'));
-                System.out.print("Enter password: ");
-                newA.setPassword(input.nextLine().replace(' ', '-'));
-                System.out.print("Enter email: ");
-                newA.setEmail(input.nextLine().replace(' ', '-'));
+                String username = JOptionPane.showInputDialog("Enter username: ");
+                newA.setUsername(username.replace(' ', '-'));
+                String pass = JOptionPane.showInputDialog("Enter password: ");
+                newA.setPassword(pass.replace(' ', '-'));
+                String email = JOptionPane.showInputDialog("Enter email: ");
+                newA.setEmail(email.replace(' ', '-'));
 
                 //Print the admin's information to UsersData.txt
                 pw.println(newA.getType() + "\t" + newA.getUsername() + "\t" + newA.getPassword() + "\t" + newA.getEmail());
 
                 //Asks if user wants to add more new administrators to the database
-                System.out.println("Add more new admins? \n(Enter 'Y' to add more admins. Enter any other key if you do not wish to add any more admins.)");
-                String choice = input.next();
-                String extra = input.nextLine();
+                String choice = JOptionPane.showInputDialog("Add more new admins? \n Enter 'Y' to add more admins.\n Enter any other key if you do not wish to add any more admins.");
                 if (choice.equalsIgnoreCase("Y")){
                     continue;
                 }
@@ -62,11 +60,7 @@ public class Admin extends User{
         public static void Menu(User user) throws Exception, IOException{
             // Menu
             Scanner input = new Scanner(System.in);
-            System.out.println("\nMenu");
-            System.out.println("--------------------");
-            System.out.println("Select:");
-            System.out.println("1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Create New Quiz \n6. Add New Admin \n7. Edit Personal Info \nEnter any other key to exit.");
-            String menu = input.nextLine();
+            String menu = JOptionPane.showInputDialog("Menu \n Select: \n1. Add Book \n2. Edit Book \n3. Delete Book \n4. Search Book \n5. Create Quiz \n6. Add New Admin \n7. Edit Personal Info \nEnter any other key to exit.");
             
             switch(menu){
                 case "1":
@@ -91,7 +85,7 @@ public class Admin extends User{
                     editUserInfo(user);
                     break;
                 default:
-                    System.out.println("You have exited the program.");
+                    JOptionPane.showMessageDialog(null, "You have exited the program.");
                     System.exit(0);
             }
             Menu(user);

@@ -2,17 +2,21 @@ package bookapp;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+
 public class BookApp {
 
-    public static void main(String[] args) throws Exception, IOException {
+     public static void main(String[] args) throws Exception, IOException {
         
-        System.out.println("Are you : \n1. A Regular User? \n2. An Admin \nEnter any other key to exit.");
-        Scanner input = new Scanner (System.in);
-        String selection = input.nextLine();
-        int index = 0;
-        
-        //Regular User Interface
-        if (selection.equals("1")){
+        JOptionPane.showMessageDialog(null, "Welcome To Readersville :)");
+         
+         int index = 0;
+         
+         int g = -1;
+         while(g < 0){
+             String input = JOptionPane.showInputDialog("Are you : \n1. A Regular User? \n2. An Admin \nEnter any other key to exit.");
+         
+          if (input.equals("1")){
             
             // Regular User Authentication
             File userfile;
@@ -37,16 +41,11 @@ public class BookApp {
             Iterator<User> it = v.iterator();
 
             //Register or Login
-            String action;
-
-            System.out.println("Register/Login");
-            System.out.println("------------------");
-            System.out.println("For new user, select '1' to register.\nFor registered user, select '2' to login. \nEnter any other key to exit.");
-            action = input.nextLine();
+            String userInput = JOptionPane.showInputDialog("Register/Login \n For new user, select '1' to register.\nFor registered user, select '2' to login. \nEnter any other key to exit.");
 
             boolean found = true;
             //Register
-            if (action.equals("1")){
+            if (userInput.equals("1")){
 
                 //Create New User
                 RegularUser newuser = new RegularUser();
@@ -54,11 +53,8 @@ public class BookApp {
 
                 //Input Username
                 while(found){
-                    System.out.println("Login");
-                    System.out.println("--------------------");
-
-                    System.out.print("Enter username: ");
-                    newuser.setUsername(input.next());
+                    String u_n = JOptionPane.showInputDialog("Login \n Enter username:");
+                    newuser.setUsername(u_n);
 
                     //Check if username is used
                     String username = newuser.getUsername();
@@ -72,18 +68,18 @@ public class BookApp {
                             found = false;
                     }
                     if(found)
-                        System.out.println("Invalid Username");
+                        JOptionPane.showMessageDialog(null, "Invalid Username");
                     else
-                        System.out.println("Valid Username");
+                        JOptionPane.showMessageDialog(null, "Valid Username");
                 }
 
                 //Input password
-                System.out.print("Enter password: ");
-                newuser.setPassword(input.next());
+                String pass = JOptionPane.showInputDialog("Enter password: ");
+                newuser.setPassword(pass);
 
                 //Input email
-                System.out.print("Enter email address: ");
-                newuser.setEmail(input.next());
+                String email = JOptionPane.showInputDialog("Enter email address: ");
+                newuser.setEmail(email);
 
                 //Add newuser to vector
                 v.add(newuser);
@@ -92,7 +88,7 @@ public class BookApp {
                 pw.println(newuser.getType()+"\t"+newuser.getUsername()+"\t"+ newuser.getPassword()+"\t"+ newuser.getEmail());
 
                 //Registration Successful
-                System.out.println("You have successfully registered as a user. Please login to proceed.");
+                JOptionPane.showMessageDialog(null, "You have successfully registered as a user. Please login to proceed.");
 
                 //Close PrintWriter
                 pw.close();
@@ -103,14 +99,9 @@ public class BookApp {
 
                 //Input Username and Password
                 while(!found){
-                    System.out.println("\nLogin");
-                    System.out.println("--------------------");
-
-                    System.out.print("Enter username: ");
-                    String username = input.next();
-
-                    System.out.print("Enter password: ");
-                    String password = input.next();
+                    JOptionPane.showMessageDialog(null, "Login");
+                    String username = JOptionPane.showInputDialog("Enter username: " );
+                    String password = JOptionPane.showInputDialog("Enter password: ");
 
                     //Authentication
                     String id = username + password;
@@ -127,28 +118,23 @@ public class BookApp {
                             found = false;
                     }
                     if(found){
-                        System.out.println("Authentication successful.");
-                        System.out.println("Welcome back, " + username);
+                        JOptionPane.showMessageDialog(null, "Authentication successful.");
+                        JOptionPane.showMessageDialog(null, "Welcome back, " + username);
                     }
                     else
-                        System.out.println("Authentication failed. Please try again.");
+                        JOptionPane.showMessageDialog(null, "Authentication failed. Please try again.");
                 }
             }
 
             //Login
-            else if(action.equals("2")){
+            else if(userInput.equals("2")){
                 found = false;
 
                 //Input Username and Password
                 while(!found){
-                    System.out.println("\nLogin");
-                    System.out.println("--------------------");
-
-                    System.out.print("Enter username: ");
-                    String username = input.next();
-
-                    System.out.print("Enter password: ");
-                    String password = input.next();
+                    JOptionPane.showMessageDialog(null, "Login");
+                    String username = JOptionPane.showInputDialog("Enter username: " );
+                    String password = JOptionPane.showInputDialog("Enter password: ");
 
                     //Authentication
                     String id = username + password;
@@ -166,16 +152,16 @@ public class BookApp {
                             found = false;
                     }
                     if(found){
-                        System.out.println("Authentication successful.");
-                        System.out.println("Welcome back, " + username);
+                         JOptionPane.showMessageDialog(null, "Authentication successful.");
+                        JOptionPane.showMessageDialog(null, "Welcome back, " + username);
                     }
                     else
-                        System.out.println("Authentication failed. Please try again.");
+                        JOptionPane.showMessageDialog(null, "Authentication failed. Please try again.");
                 }    
             }
             else{
-                System.out.println("You have exited the program.");
-                System.exit(0);
+                    JOptionPane.showMessageDialog(null, "You have exited the program.");
+                    System.exit(0);
             }
             // Create copy of current user
             User user =(User) v.get(index);
@@ -185,7 +171,7 @@ public class BookApp {
             
         }
         //Admin interface
-        else if (selection.equals("2")){
+        else if (input.equals("2")){
             
             File userfile;
             userfile = new File("UsersData.txt");
@@ -211,14 +197,9 @@ public class BookApp {
 
             //Input Username and Password
             while(!found){
-                System.out.println("\nLogin");
-                System.out.println("------------------");
-
-                System.out.print("Enter username: ");
-                String username = input.next();
-
-                System.out.print("Enter password: ");
-                String password = input.next();
+                 JOptionPane.showMessageDialog(null, "Login");
+                    String username = JOptionPane.showInputDialog("Enter username: " );
+                    String password = JOptionPane.showInputDialog("Enter password: ");
 
                 //Authentication
                 String id = username + password;
@@ -235,11 +216,11 @@ public class BookApp {
                         found = false;
                 }
                 if(found){
-                    System.out.println("Authentication successful.");
-                    System.out.println("Welcome back, " + username);
+                    JOptionPane.showMessageDialog(null, "Authentication successful.");
+                        JOptionPane.showMessageDialog(null, "Welcome back, " + username);
                 }
                 else
-                    System.out.println("Authentication failed. Please try again.");
+                     JOptionPane.showMessageDialog(null, "Authentication failed. Please try again.");
             }
             // Create copy of current user
             User user =(User) v.get(index);
@@ -248,8 +229,14 @@ public class BookApp {
             Admin.Menu(user);                   
         }
         else{
-            System.out.println("You have exited the program.");
+            JOptionPane.showMessageDialog(null, "You have exited the program.");
         }        
+          
     }
+  }
+         
 }
     
+
+
+

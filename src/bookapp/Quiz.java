@@ -4,6 +4,7 @@ package bookapp;
 import java.io.*;
 import java.util.*;
 import static bookapp.Book.displayBook;
+import javax.swing.JOptionPane;
 
 public class Quiz {
     
@@ -19,12 +20,12 @@ public class Quiz {
         
         boolean num = false;
         while (!num){
-            System.out.println("Number of questions? ");
+            String in = JOptionPane.showInputDialog("Number of questions? ");
             try{
-                qnum = Integer.parseInt(input.nextLine());
+                qnum = Integer.parseInt(in);
                 num = true;
             }catch(NumberFormatException e){
-                System.out.println("Please enter a numerical input.");
+                JOptionPane.showMessageDialog(null, "Please enter a numerical input.");
             }
         }
                     
@@ -33,25 +34,22 @@ public class Quiz {
         int i = 1;
         while (i <= qnum){
             Question q = new Question();
-            System.out.print("Enter question " + i + ": ");
+            String question = JOptionPane.showInputDialog("Enter question: ");
             q.setQuestion(input.nextLine());
-            
-            System.out.println("Enter choices");
-            System.out.println("--------------------");
 
             Vector<Answers> answers = new Vector();
                         
             boolean next = true;
             while (next){
                 Answers a = new Answers();
-                System.out.print("Enter display text: ");
-                a.setChoice(input.nextLine());
-                System.out.print("Enter corresponding result: ");
-                a.setResult(input.nextLine());
+                JOptionPane.showMessageDialog(null, "Enter choices");
+                String text = JOptionPane.showInputDialog("Enter display text: ");
+                a.setChoice(text);
+                String result = JOptionPane.showInputDialog("Enter corresponding result: ");
+                a.setResult(result);
                 answers.add(a);
                 
-                System.out.println("Do you wish to add more choices for this question? \n(Enter 'Y' to add more choices for this question. Enter any other key to proceed.)");
-                String answer = input.nextLine();
+                String answer = JOptionPane.showInputDialog("Do you wish to add more choices for this question? \nEnter 'Y' to add more choices for this question. \nEnter any other key to proceed.");
                 if (answer.equalsIgnoreCase("Y")){
                     continue;
                 }
@@ -121,6 +119,7 @@ public class Quiz {
             }
         }
         
+        // Shuffle questions
         Collections.shuffle(questions);
         
         Scanner input = new Scanner (System.in);
@@ -136,16 +135,15 @@ public class Quiz {
         ListIterator<Question> itq = questions.listIterator();
         ListIterator<Answers> ita = null;
         
-        System.out.println("\nQuiz");
-        System.out.println("--------------------");
+        JOptionPane.showMessageDialog(null, "Quiz");
         while (itq.hasNext()){
             while (userinput){
                 question = itq.next();
-                System.out.println("\n" + question.getQuestion());
+                JOptionPane.showMessageDialog(null, "\n" + question.getQuestion());
                 ita = question.getAnswers().listIterator();
                 while (ita.hasNext()){
                     answer = ita.next();
-                    System.out.println((ita.previousIndex()+1) + ". " + answer.getChoice());
+                    JOptionPane.showMessageDialog(null, ((ita.previousIndex()+1) + answer.getChoice()));
                 }
                 userinput = false;
             }
@@ -200,7 +198,7 @@ public class Quiz {
             }
         }
         
-        System.out.println("Your results: " + results);
+        JOptionPane.showMessageDialog(null, "Your results: " + results);
         displayBook(results);
     }
 }
